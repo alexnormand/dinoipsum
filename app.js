@@ -20,11 +20,11 @@ app.configure(function(){
     dest: __dirname + '/public',
     compile: function(str, path) {
       return stylus(str)
-        .import('flat-ui/css/bootstrap.css')
-        .import('flat-ui/css/flat-ui.css')
+        .import('../components/flat-ui/css/bootstrap.css')
+        .import('../components/flat-ui/css/flat-ui.css')
         .set('paths', [__dirname + '/public/components'])
         .set('filename', path)
-        .set('include css', true)
+        // .set('include css', true)
         .set('compress', true)
         .use(nib())
         .import('nib');
