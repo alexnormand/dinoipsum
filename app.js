@@ -20,9 +20,14 @@ app.configure(function(){
     dest: __dirname + '/public',
     compile: function(str, path) {
       return stylus(str)
+        .import('flat-ui/css/bootstrap.css')
+        .import('flat-ui/css/flat-ui.css')
+        .set('paths', [__dirname + '/public/components'])
         .set('filename', path)
+        .set('include css', true)
         .set('compress', true)
-        .use(nib());
+        .use(nib())
+        .import('nib');
     }
   }));
   app.use(express.favicon());
@@ -31,7 +36,6 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
-
 });
 
 app.configure('development', function(){
