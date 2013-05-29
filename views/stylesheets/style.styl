@@ -1,35 +1,71 @@
+@import url(http://fonts.googleapis.com/css?family=Nunito&text='Dino Ipsumylkedsars?');
+
+$darkBlue = #34495e
+$lightGreenGrey = #95a5a6
+$lightGrey = #ccc
+
+$headerHeight = 450px
+
 body
-  padding: 50px
-  font-family: Lato
+  font-size: 20px
+  color: #333
 
 .intro
+  background: $darkBlue
+  font-family: 'Nunito'
   text-align: center
   position: fixed
-  height: 410px
+  height: $headerHeight
   width: 100%
-  left: 0
 
   h1
     font-size: 70px
-    margin: 2px auto;
+    margin: 10px auto 20px
+    color: $lightGrey
 
   .logo
-    background: url('../images/baby-dino.svg') center 0 no-repeat
+    background: url('../images/baby-37796.svg') center 0 no-repeat
     height: 340px
     width: 310px
     display: inline-block
 
   small
     font-size: 20px
-    color: #95a5a6
+    color: $lightGreenGrey
 
 
-.content
-  background: #FFF
+.container
+  background: #F9F9F9
+  border-top: 5px solid black
   position: relative
   z-index: 1
-  top: 410px
+  top: $headerHeight
+  width: 100%
+
+.content
   padding: 40px 0
+  max-width: 940px;
+  margin: 10px auto;
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus
+  border-color: #16a085
+
+
 
 
 

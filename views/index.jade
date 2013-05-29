@@ -1,38 +1,29 @@
 extends layout
 
 block content
-    p.
-      Bacon ipsum dolor sit amet rump pork chop fatback, flank chuck hamburger jerky venison. Jowl chicken shank leberkas, tongue pork chop tri-tip turkey biltong prosciutto. Tri-tip hamburger chicken, ham turkey bresaola ground round ham hock. Shoulder sirloin flank cow drumstick turducken. Bacon capicola venison beef ham chicken, pork chop corned beef jerky drumstick tenderloin. Hamburger beef sausage short ribs, biltong boudin capicola fatback chuck shank pork chop. Pastrami bresaola pork belly, bacon capicola sausage fatback short loin sirloin shankle chuck ham salami tail ribeye.
+  .row
+    .span12
+      p.
+        Dino Ipsum is a ipsum for dinosaur lovers and anyone who needs meaningless filler text for
+        prototyping web pages.
+      p.
+        Simply select your desired options and hit the <strong>Give me Dinos!</strong> button
 
-    p.
-      Kielbasa biltong bresaola, shoulder prosciutto chicken leberkas tail rump jowl frankfurter boudin. Brisket prosciutto tail shoulder drumstick. Bresaola pig ground round fatback. Pork loin rump pancetta jowl ball tip hamburger. Kielbasa drumstick frankfurter ground round, tail pork jowl ribeye biltong jerky short loin pancetta.
+  .row
+    .span12
+      form(method="GET")
+        .row
+          .span12
+            input(type="number", min=0, step=1, placeholder="Number of Paragraphs")
+        .row
+          .span12
+            input(type="number", min=0, step=1, placeholder="Words per Paragraph")
 
-    p.
-      Pork belly bacon beef meatloaf chuck ground round. Andouille leberkas chuck, meatball ball tip ribeye doner. Jowl beef ribs short ribs t-bone, frankfurter tongue tri-tip short loin leberkas. Sirloin leberkas pork chop pork, turducken flank andouille ball tip turkey chuck t-bone bacon. Boudin spare ribs pork chop, meatloaf chicken ground round flank fatback bresaola cow ball tip andouille. Brisket sausage short ribs flank ball tip prosciutto leberkas jerky, turkey short loin.
 
-    p.
-      Tri-tip shank tenderloin salami meatball meatloaf strip steak ham hock chicken. Meatloaf sausage pork belly pork hamburger doner brisket andouille. Brisket ham hock pancetta corned beef. Venison sirloin tenderloin, ribeye pancetta ground round bresaola chuck pastrami pork chop pig.
 
-    p.
-      Shankle pork chop pork belly, t-bone kielbasa leberkas salami short loin jerky sausage filet mignon boudin ham. Rump brisket salami tail pastrami bacon turkey drumstick sausage capicola ball tip. Pancetta spare ribs bresaola, kielbasa pork belly jowl rump. Pork loin shoulder capicola meatball jowl pork chop. T-bone bresaola spare ribs filet mignon tongue ham hock strip steak beef pork chop pork belly drumstick ball tip.
-
-    p Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!
-
-    p.
-      Bacon ipsum dolor sit amet rump pork chop fatback, flank chuck hamburger jerky venison. Jowl chicken shank leberkas, tongue pork chop tri-tip turkey biltong prosciutto. Tri-tip hamburger chicken, ham turkey bresaola ground round ham hock. Shoulder sirloin flank cow drumstick turducken. Bacon capicola venison beef ham chicken, pork chop corned beef jerky drumstick tenderloin. Hamburger beef sausage short ribs, biltong boudin capicola fatback chuck shank pork chop. Pastrami bresaola pork belly, bacon capicola sausage fatback short loin sirloin shankle chuck ham salami tail ribeye.
-
-    p.
-      Kielbasa biltong bresaola, shoulder prosciutto chicken leberkas tail rump jowl frankfurter boudin. Brisket prosciutto tail shoulder drumstick. Bresaola pig ground round fatback. Pork loin rump pancetta jowl ball tip hamburger. Kielbasa drumstick frankfurter ground round, tail pork jowl ribeye biltong jerky short loin pancetta.
-
-    p.
-      Pork belly bacon beef meatloaf chuck ground round. Andouille leberkas chuck, meatball ball tip ribeye doner. Jowl beef ribs short ribs t-bone, frankfurter tongue tri-tip short loin leberkas. Sirloin leberkas pork chop pork, turducken flank andouille ball tip turkey chuck t-bone bacon. Boudin spare ribs pork chop, meatloaf chicken ground round flank fatback bresaola cow ball tip andouille. Brisket sausage short ribs flank ball tip prosciutto leberkas jerky, turkey short loin.
-
-    p.
-      Tri-tip shank tenderloin salami meatball meatloaf strip steak ham hock chicken. Meatloaf sausage pork belly pork hamburger doner brisket andouille. Brisket ham hock pancetta corned beef. Venison sirloin tenderloin, ribeye pancetta ground round bresaola chuck pastrami pork chop pig.
-
-    p.
-      Shankle pork chop pork belly, t-bone kielbasa leberkas salami short loin jerky sausage filet mignon boudin ham. Rump brisket salami tail pastrami bacon turkey drumstick sausage capicola ball tip. Pancetta spare ribs bresaola, kielbasa pork belly jowl rump. Pork loin shoulder capicola meatball jowl pork chop. T-bone bresaola spare ribs filet mignon tongue ham hock strip steak beef pork chop pork belly drumstick ball tip.
-
-    p Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!
-
+  .row
+    .span3
+      a(href="#", class="btn btn-large btn-block btn-inverse") Give me Dinos !
+    .span3
+      a(href="#", class="btn btn-large btn-block btn-danger") Reset
 
