@@ -6,6 +6,10 @@ $lightGrey = #ccc
 
 $headerHeight = 450px
 
+.thick-black-border
+  border-top: 5px solid black;
+
+
 body
   font-size: 20px
   color: #333
@@ -25,9 +29,10 @@ body
 
   .logo
     background: url('../images/baby-37796.svg') center 0 no-repeat
-    height: 340px
+    height: 330px
     width: 310px
     display: inline-block
+    margin: 10px 0 0 0
 
   small
     font-size: 20px
@@ -40,8 +45,9 @@ body
   width: 100%
 
 .main-container
+  @extend .thick-black-border
   background: #F9F9F9
-  border-top: 5px solid black;
+
 
 .content
   padding: 40px 0
@@ -67,11 +73,20 @@ input[type="color"]:focus,
   border-color: #16a085
 
 
+hr
+  border-top: 1px solid #DDD
+  border-bottom: 1px solid #FFF
+
+
 footer
   color: #333
   text-align: center
   margin: 50 auto
 
+
+.shipswheel
+  margin: 5px
+  font-size: 18px
 
 
 

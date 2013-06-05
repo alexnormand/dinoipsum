@@ -1,29 +1,68 @@
 extends layout
 
 block content
-  .row
+  h1 Introduction
+  .row-fluid
     .span12
       p.
         Dino Ipsum is a lorem ipsum for dinosaur lovers and anyone who needs meaningless filler text for
         prototyping web pages.
       p.
         Simply select your desired options and hit the <strong>Give me Dinos!</strong> button
-
-  .row
+  hr
+  h2 Getting Started
+  .row-fluid
     .span12
       form(method="GET")
-        .row
+        .row-fluid
           .span12
             input(type="number", min=0, step=1, placeholder="Number of Paragraphs")
-        .row
+        .row-fluid
           .span12
             input(type="number", min=0, step=1, placeholder="Words per Paragraph")
+        .row-fluid
+          .span12
+            select
+              option html
+              option json
+              option plain text
 
-
-
-  .row
+  .row-fluid
     .span3
       a(href="#", class="btn btn-large btn-block btn-inverse") Give me Dinos !
     .span3
       a(href="#", class="btn btn-large btn-block btn-danger") Reset
 
+  hr
+  h2 Full CORS support
+  .row-fluid
+    .span12
+      p.
+        Dino Ipsum supports CORS request, this means that you can pull data from Dino Ipsum directly
+        with a cross domain ajax request.
+
+      pre.
+        // jQuery.ajax example
+        var getDinos      = $.get('http://dinoipsum.herokuapp.com/paragraphs/4.html'),
+            fillContainer = function(html) {
+              $('#some-awesome-container').html(html);
+            },
+            oops = function() {
+              console.log('Where did all the dinosaurs go?');
+            };
+
+        getDinos.then(fillContainer, oops);
+      br
+      pre.
+        // Vanilla JavaScript example
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('GET', 'http://dinoipsum.herokuapp.com/paragraphs/4.html');
+        xhr.onload = function() {
+          if (this.status === 200) {
+            document.querySelector('#some-awesome-container').innerHTML = this.response;
+          } else {
+            console.log('Where did all the dinosaurs go?');
+          }
+        };
+        xhr.send();
