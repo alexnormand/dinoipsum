@@ -7,34 +7,39 @@ module.exports = function (grunt) {
         file: 'app.js'
       }
     },
-    regarde: {
+    watch: {
+      options: {
+        livereload: true
+      },
       js: {
         files: [
           'app.js',
           'routes/*.js'
         ],
-        tasks: ['develop', 'delayed-livereload']
+        tasks: ['develop', 'delayed-livereload'],
+        options: {
+          nospawn: true
+        }
       },
       stylus: {
-        files: ['views/stylesheets/*.styl'],
-        tasks: ['livereload']
+        files: ['views/stylesheets/*.styl']
       },
       jade: {
-        files: ['views/*.jade'],
-        tasks: ['livereload']
+        files: ['views/*.jade']
       }
     }
-	});
+  });
+
   grunt.registerTask('delayed-livereload', 'delayed livereload', function () {
     var done = this.async();
     setTimeout(function () {
-      grunt.task.run('livereload');
+      grunt.task.run('watch');
       done();
     }, 500);
   });
-	grunt.loadNpmTasks('grunt-develop');
-  grunt.loadNpmTasks('grunt-regarde');
-  grunt.loadNpmTasks('grunt-contrib-livereload');
 
-  grunt.registerTask('default', ['livereload-start', 'develop', 'regarde']);
+  grunt.loadNpmTasks('grunt-develop');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+
+  grunt.registerTask('default', ['develop', 'watch']);
 };
