@@ -16,10 +16,10 @@ block content
       form(method="GET")
         .row-fluid
           .span12
-            input(type="number", min=0, step=1, placeholder="Number of Paragraphs")
+            input(type="text", pattern="[0-9]+", required, placeholder="Number of Paragraphs")
         .row-fluid
           .span12
-            input(type="number", min=0, step=1, placeholder="Words per Paragraph")
+            input(type="text", pattern="[0-9]+", required, placeholder="Words per Paragraph")
         .row-fluid
           .span12
             select
