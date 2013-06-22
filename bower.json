@@ -7,6 +7,8 @@
     "components"
   ],
   "dependencies": {
-    "flat-ui": "latest"
+    "flat-ui": "latest",
+    "requirejs": "~2.1.6",
+    "bootstrap": "~2.3.2"
   }
 }
