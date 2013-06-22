@@ -29,7 +29,7 @@ block content
 
   .row-fluid
     .span3
-      a(href="#", class="btn btn-large btn-block btn-inverse") Give me Dinos !
+      a(href="#res", class="btn btn-large btn-block btn-inverse", data-toggle="modal") Give me Dinos !
     .span3
       a(href="#", class="btn btn-large btn-block btn-danger") Reset
 
@@ -66,3 +66,14 @@ block content
           }
         };
         xhr.send();
+
+
+  #res.modal.hide.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-header
+      button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+      h3 Output
+    .modal-body
+      p.dino-output
+    .modal-footer
+      button.btn.btn-danger(data-dismiss='modal', aria-hidden='true') Close
+      button.btn Save changes
