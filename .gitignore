@@ -3,3 +3,4 @@ public/components
 public/stylesheets
 .sass-cache
 nohup.out
+dist/
