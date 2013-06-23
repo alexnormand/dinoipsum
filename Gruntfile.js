@@ -27,6 +27,26 @@ module.exports = function (grunt) {
       jade: {
         files: ['views/*.jade']
       }
+    },
+    clean: ['dist'],
+    copy: {
+      main: {
+        files: [
+          {
+            expand: true,
+            src: [
+              'public/**',
+              'routes/**',
+              'views/**',
+              'app.js',
+              'Gruntfile.js',
+              'bower.json',
+              'package.json'
+            ],
+            dest: 'dist'
+          }
+        ]
+      }
     }
   });
 
@@ -40,6 +60,9 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-develop');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   grunt.registerTask('default', ['develop', 'watch']);
+  grunt.registerTask('build', ['clean', 'copy']);
 };
