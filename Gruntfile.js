@@ -47,6 +47,16 @@ module.exports = function (grunt) {
           }
         ]
       }
+    },
+    requirejs: {
+      compile: {
+        options: {
+          preserveLicenseComments: false,
+          name: 'main',
+          mainConfigFile: 'dist/public/javascripts/main.js',
+          out: 'dist/public/javascripts/main.js'
+        }
+      }
     }
   });
 
@@ -62,7 +72,8 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-requirejs');
 
   grunt.registerTask('default', ['develop', 'watch']);
-  grunt.registerTask('build', ['clean', 'copy']);
+  grunt.registerTask('build', ['clean', 'copy', 'requirejs']);
 };
