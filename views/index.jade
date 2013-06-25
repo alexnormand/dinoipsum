@@ -41,7 +41,7 @@ block content
         Dino Ipsum supports CORS request, this means that you can pull data from Dino Ipsum directly
         with a cross domain ajax request.
 
-      pre.
+      pre.prettyprint.lang-javascript.
         // jQuery.ajax example
         var getDinos      = $.get('http://dinoipsum.herokuapp.com/paragraphs/4.html'),
             fillContainer = function(html) {
@@ -53,7 +53,7 @@ block content
 
         getDinos.then(fillContainer, oops);
       br
-      pre.
+      pre.prettyprint.lang-javascript.
         // Vanilla JavaScript example
         var xhr = new XMLHttpRequest();
 

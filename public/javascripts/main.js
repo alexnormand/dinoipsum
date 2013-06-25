@@ -1,9 +1,10 @@
 require.config({
   baseUrl: './',
   paths: {
-    'jquery'              : '../components/jquery/jquery',
-    'bootstrap-modal'     : '../components/bootstrap/js/bootstrap-modal',
-    'bootstrap-transition': '../components/bootstrap/js/bootstrap-transition'
+    'jquery'               : '../components/jquery/jquery',
+    'bootstrap-modal'      : '../components/bootstrap/js/bootstrap-modal',
+    'bootstrap-transition' : '../components/bootstrap/js/bootstrap-transition',
+    'prettify'             : '../components/google-code-prettify/src/prettify'
   },
   shim: {
     'bootstrap-modal'     : ['jquery'],
@@ -11,4 +12,6 @@ require.config({
   }
 });
 
-require(['jquery', 'bootstrap-modal', 'bootstrap-transition']);
+require(['jquery', 'prettify', 'bootstrap-modal', 'bootstrap-transition'], function ($, prettify) {
+  prettify.prettyPrint();
+});

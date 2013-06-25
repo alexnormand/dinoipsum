@@ -9,6 +9,7 @@
   "dependencies": {
     "flat-ui": "latest",
     "requirejs": "~2.1.6",
-    "bootstrap": "~2.3.2"
+    "bootstrap": "~2.3.2",
+    "google-code-prettify": "~1.0.0"
   }
 }

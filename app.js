@@ -23,7 +23,7 @@ app.configure(function() {
       return stylus(str)
         .import('../components/flat-ui/css/bootstrap.css')
         .import('../components/flat-ui/css/flat-ui.css')
-        //.set('paths', [__dirname + '/public/components'])
+        .import('../components/google-code-prettify/src/prettify.css')
         .set('filename', path)
         // .set('include css', true)
         .set('compress', true)
