@@ -7,7 +7,6 @@
   },
   "dependencies": {
     "express": "~3.2.6",
-    "jade": "*",
     "stylus": "~0.32.1",
     "nib": "~0.9.1"
   },
