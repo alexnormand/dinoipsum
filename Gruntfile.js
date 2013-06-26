@@ -12,21 +12,16 @@ module.exports = function (grunt) {
         livereload: true
       },
       js: {
-        files: [
-          'app.js',
-          'routes/*.js'
-        ],
+        files: ['app.js'],
         tasks: ['develop', 'delayed-livereload'],
         options: {
           nospawn: true
         }
       },
       stylus: {
-        files: ['views/stylesheets/*.styl']
+        files: ['stylesheets/*.styl']
       },
-      jade: {
-        files: ['views/*.jade']
-      }
+
     },
     clean: ['dist'],
     copy: {
@@ -36,8 +31,6 @@ module.exports = function (grunt) {
             expand: true,
             src: [
               'public/**',
-              'routes/**',
-              'views/**',
               'app.js',
               'Gruntfile.js',
               'bower.json',

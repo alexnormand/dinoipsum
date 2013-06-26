@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dino Ipsum</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <header class="intro">
+      <div class="logo-container">
+        <div class="logo"></div>
+        <h1>Dino Ipsum</h1>
+        <small>Do you like dinosaurs ?</small>
+      </div>
+      <a href="https://github.com/alexnormand/dinoipsum">
+        <img style="position: absolute; top: 0; right: 0; border: 0;"
+             src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"
+             alt="Fork me on GitHub">
+      </a>
+    </header>
+    <div class="container main-container">
+      <div class="content">
+        <h1>Introduction</h1>
+        <div class="row-fluid">
+          <div class="span12">
+            <p>Dino Ipsum is a lorem ipsum for dinosaur lovers and anyone who needs meaningless filler text for
+              prototyping web pages.
+            </p>
+            <p>Simply select your desired options and hit the <strong>Give me Dinos!</strong> button</p>
+          </div>
+        </div>
+        <hr>
+        <h2>Getting Started</h2>
+        <div class="row-fluid">
+          <div class="span12">
+            <form method="GET">
+              <div class="row-fluid">
+                <div class="span12"><input type="text" pattern="[0-9]+" required placeholder="Number of Paragraphs"></div>
+              </div>
+              <div class="row-fluid">
+                <div class="span12"><input type="text" pattern="[0-9]+" required placeholder="Words per Paragraph"></div>
+              </div>
+              <div class="row-fluid">
+                <div class="span12">
+                  <select>
+                    <option>html</option>
+                    <option>json</option>
+                    <option>plain text</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row-fluid">
+          <div class="span3"><a href="#res" data-toggle="modal" class="btn btn-large btn-block btn-inverse">Give me Dinos !</a></div>
+          <div class="span3"><a href="#" class="btn btn-large btn-block btn-danger">Reset</a></div>
+        </div>
+        <hr>
+        <h2>Full CORS support</h2>
+        <div class="row-fluid">
+          <div class="span12">
+            <p>Dino Ipsum supports CORS request, this means that you can pull data from Dino Ipsum directly
+              with a cross domain ajax request.
+            </p>
+            <pre class="prettyprint lang-javascript">
+// jQuery.ajax example
+var getDinos      = $.get('http://dinoipsum.herokuapp.com/paragraphs/4.html'),
+    fillContainer = function(html) {
+      $('#some-awesome-container').html(html);
+    },
+    oops = function() {
+      console.log('Where did all the dinosaurs go?');
+    };
+
+getDinos.then(fillContainer, oops);</pre>
+            <br>
+            <pre class="prettyprint lang-javascript">
+// Vanilla JavaScript example
+var xhr = new XMLHttpRequest();
+
+xhr.open('GET', 'http://dinoipsum.herokuapp.com/paragraphs/4.html');
+xhr.onload = function() {
+  if (this.status === 200) {
+    document.querySelector('#some-awesome-container').innerHTML = this.response;
+  } else {
+    console.log('Where did all the dinosaurs go?');
+  }
+};
+xhr.send();
+
+</pre>
+          </div>
+        </div>
+        <div id="res" tabindex="-1" role="dialog" aria-labelledby="res" aria-hidden="true" class="modal hide fade">
+          <div class="modal-header">
+            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+            <h3>Output</h3>
+          </div>
+          <div class="modal-body">
+            <p class="dino-output"></p>
+          </div>
+          <div class="modal-footer"><button data-dismiss="modal" aria-hidden="true" class="btn btn-danger">Close</button><button class="btn">Save changes</button></div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <p>2013<span class="shipswheel">⎈</span>Alex Normand</p>
+        </div>
+      </div>
+    </footer>
+    <script src="/components/requirejs/require.js" data-main="javascripts/main"></script>
+    <script src="http://localhost:35729/livereload.js"></script>
+  </body>
+</html>
