@@ -24,7 +24,6 @@ app.configure(function() {
         .import('../components/flat-ui/css/flat-ui.css')
         .import('../components/google-code-prettify/src/prettify.css')
         .set('filename', path)
-        // .set('include css', true)
         .set('compress', true)
         .use(nib())
         .import('nib');
