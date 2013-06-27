@@ -113,7 +113,7 @@ module.exports = function (grunt) {
         options: {
           almond: true,
           replaceRequireScript: [{
-            files: ['public/index.html'],
+            files: ['dist/public/index.html'],
             module: 'main'
           }],
           preserveLicenseComments: false,
