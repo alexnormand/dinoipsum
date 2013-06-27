@@ -23,6 +23,8 @@ module.exports = function (grunt) {
       },
 
     },
+
+    // build tasks
     clean: ['dist'],
     copy: {
       main: {
@@ -78,6 +80,34 @@ module.exports = function (grunt) {
         }
       }
     },
+    lineremover: {
+      removelivereload: {
+        files: {
+          'dist/public/index.html':  'dist/public/index.html'
+        },
+        options: {
+          exclusionPattern: /<script src="http:\/\/localhost:35729\/livereload.js"><\/script>/
+        }
+      },
+      removeimports: {
+        files: {
+          'dist/public/stylesheets/style.css': 'dist/public/stylesheets/style.css'
+        },
+        options: {
+          exclusionPattern: /@import url/
+        }
+      }
+    },
+    cssmin: {
+      compile: {
+        options: {
+          keepSpecialComments: 0
+        },
+        files: {
+          'dist/public/stylesheets/style.css': ['dist/public/stylesheets/style.css']
+        }
+      }
+    },
     requirejs: {
       compile: {
         options: {
@@ -91,11 +121,31 @@ module.exports = function (grunt) {
           dir: 'dist/public/javascripts',
           appDir: 'public/javascripts',
           baseDir: 'public/javascripts',
-          mainConfigFile: 'public/javascripts/main.js'/*,
-          out: 'dist/public/javascripts/main.js'*/
+          mainConfigFile: 'public/javascripts/main.js'
         }
       }
+    },
+    dom_munger: {
+      nunito: {
+        options: {
+          append: {
+            selector: 'head',
+            html: '<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nunito&text=DinoIpsumylkedsars?">'
+          }
+        },
+        src: 'dist/public/index.html'
+      },
+      lato: {
+        options: {
+          append: {
+            selector: 'head',
+            html: '<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:400,700,900,400italic">'
+          }
+        },
+        src: 'dist/public/index.html'
+      }
     }
+
   });
 
   grunt.registerTask('delayed-livereload', 'delayed livereload', function () {
@@ -111,8 +161,12 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-stylus');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-requirejs');
+  grunt.loadNpmTasks('grunt-line-remover');
+  grunt.loadNpmTasks('grunt-dom-munger');
+
 
   grunt.registerTask('default', ['develop', 'watch']);
-  grunt.registerTask('build', ['clean', 'copy', 'stylus', 'requirejs']);
+  grunt.registerTask('build', ['clean', 'copy', 'stylus', 'lineremover', 'cssmin', 'requirejs', 'dom_munger']);
 };
