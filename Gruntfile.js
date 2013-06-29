@@ -130,7 +130,7 @@ module.exports = function (grunt) {
         options: {
           append: {
             selector: 'head',
-            html: '<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nunito&text=DinoIpsumylkedsars?">'
+            html: '<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nunito&text=DinoIpsumylkedsars%3F">'
           }
         },
         src: 'dist/public/index.html'
