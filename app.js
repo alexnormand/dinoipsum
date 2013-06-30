@@ -2,12 +2,13 @@
 /**
  * Module dependencies.
  */
-var express = require('express'),
-    stylus  = require('stylus'),
-    nib     = require('nib'),
-    fs      = require('fs'),
-    http    = require('http'),
-    path    = require('path');
+var express   = require('express'),
+    stylus    = require('stylus'),
+    nib       = require('nib'),
+    dinoipsum = require(__dirname + '/dinoipsum/index.js'),
+    fs        = require('fs'),
+    http      = require('http'),
+    path      = require('path');
 
 var app = express();
 
@@ -43,6 +44,10 @@ app.configure('development', function() {
 
 app.get('/', function(req, res) {
   fs.createReadStream(__dirname + '/public/index.html').pipe(res);
+});
+
+app.get('/paragraphs/:p', function(req, res) {
+  res.end(dinoipsum.getDinos(req.params.p));
 });
 
 http.createServer(app).listen(app.get('port'), function() {

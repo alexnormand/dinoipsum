@@ -13,5 +13,18 @@ require.config({
 });
 
 require(['jquery', 'prettify', 'bootstrap-modal', 'bootstrap-transition'], function ($, prettify) {
+
+  $('[data-toggle=modal]').on('click', function (e) {
+    e.stopPropagation();
+
+    var $target = $($(this).attr('href')),
+        setDinoParagraphs = function (html) {
+          $('#dino-output').text(html);
+          $target.modal('toggle');
+        };
+
+    $.get('/paragraphs/14').then(setDinoParagraphs);
+  });
+
   prettify.prettyPrint();
 });
