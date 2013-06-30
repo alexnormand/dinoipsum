@@ -34,6 +34,7 @@ module.exports = function (grunt) {
             src: [
               'public/index.html',
               'public/images/baby-37796.svg',
+              'dinoipsum/*',
               'app.js',
               'Gruntfile.js',
               'bower.json',
