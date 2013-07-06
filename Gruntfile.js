@@ -21,7 +21,9 @@ module.exports = function (grunt) {
       stylus: {
         files: ['stylesheets/*.styl']
       },
-
+      index: {
+        files: ['public/index.html']
+      }
     },
 
     // build tasks
