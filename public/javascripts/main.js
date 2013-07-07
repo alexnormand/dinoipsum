@@ -34,13 +34,16 @@ require([
       e.stopPropagation();
 
       var $target = $($(this).attr('href')),
+          url     = '/get/?' + $('input[name], select[name]').serialize(),
           setDinoParagraphs = function (html) {
             $('#dino-output').text(html);
             $target.modal('toggle');
           };
 
-      $.get('/paragraphs/14').then(setDinoParagraphs);
+      $.get(url).then(setDinoParagraphs);
     });
 
+
+    // prettyprint usage examples
     prettify.prettyPrint();
 });

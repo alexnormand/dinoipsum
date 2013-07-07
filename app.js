@@ -46,8 +46,9 @@ app.get('/', function(req, res) {
   fs.createReadStream(__dirname + '/public/index.html').pipe(res);
 });
 
-app.get('/paragraphs/:p', function(req, res) {
-  res.end(dinoipsum.getDinos(req.params.p));
+app.get('/get', function(req, res) {
+  res.type('html');
+  res.end(dinoipsum.getDinos(req.query));
 });
 
 http.createServer(app).listen(app.get('port'), function() {
