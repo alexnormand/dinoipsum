@@ -21,8 +21,8 @@ app.configure(function() {
     dest: __dirname + '/public',
     compile: function(str, path) {
       return stylus(str)
-        .import('../components/flat-ui/css/bootstrap.css')
-        .import('../components/flat-ui/css/flat-ui.css')
+        .import('../components/flatui/bootstrap/css/bootstrap.css')
+        .import('../components/flatui/css/flat-ui.css')
         .import('../components/google-code-prettify/src/prettify.css')
         .set('filename', path)
         .set('compress', true)
@@ -46,8 +46,9 @@ app.get('/', function(req, res) {
   fs.createReadStream(__dirname + '/public/index.html').pipe(res);
 });
 
-app.get('/paragraphs/:p', function(req, res) {
-  res.end(dinoipsum.getDinos(req.params.p));
+app.get('/get', function(req, res) {
+  res.type('html');
+  res.end(dinoipsum.getDinos(req.query));
 });
 
 http.createServer(app).listen(app.get('port'), function() {
