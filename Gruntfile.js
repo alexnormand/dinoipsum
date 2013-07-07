@@ -11,12 +11,15 @@ module.exports = function (grunt) {
       options: {
         livereload: true
       },
-      js: {
+      backendjs: {
         files: ['app.js'],
         tasks: ['develop', 'delayed-livereload'],
         options: {
           nospawn: true
         }
+      },
+      frontendjs: {
+        files: 'public/javascripts/*'
       },
       stylus: {
         files: ['stylesheets/*.styl']
@@ -46,7 +49,7 @@ module.exports = function (grunt) {
           },
           {
             expand: true,
-            cwd: 'public/components/flat-ui/images/',
+            cwd: 'public/components/flatui/images/',
             src: ['**'],
             dest: 'dist/public/images'
           },
@@ -58,7 +61,7 @@ module.exports = function (grunt) {
           },
           {
             expand: true,
-            cwd: 'public/components/flat-ui/fonts/',
+            cwd: 'public/components/flatui/fonts/',
             src: ['**'],
             dest: 'dist/public/fonts'
           },
@@ -72,8 +75,8 @@ module.exports = function (grunt) {
             require('nib')
           ],
           import: [
-            '../public/components/flat-ui/css/bootstrap.css',
-            '../public/components/flat-ui/css/flat-ui.css',
+            '../public/components/flatui/bootstrap/css/bootstrap.css',
+            '../public/components/flatui/css/flat-ui.css',
             '../public/components/google-code-prettify/src/prettify.css'
           ],
           'include css': true
@@ -128,7 +131,7 @@ module.exports = function (grunt) {
         }
       }
     },
-    dom_munger: {
+    dommunger: {
       nunito: {
         options: {
           append: {
@@ -171,5 +174,5 @@ module.exports = function (grunt) {
 
 
   grunt.registerTask('default', ['develop', 'watch']);
-  grunt.registerTask('build', ['clean', 'copy', 'stylus', 'lineremover', 'cssmin', 'requirejs', 'dom_munger']);
+  grunt.registerTask('build', ['clean', 'copy', 'stylus', 'lineremover', 'cssmin', 'requirejs', 'dommunger']);
 };
