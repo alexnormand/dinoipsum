@@ -21,8 +21,8 @@ app.configure(function() {
     dest: __dirname + '/public',
     compile: function(str, path) {
       return stylus(str)
-        .import('../components/flat-ui/css/bootstrap.css')
-        .import('../components/flat-ui/css/flat-ui.css')
+        .import('../components/flatui/bootstrap/css/bootstrap.css')
+        .import('../components/flatui/css/flat-ui.css')
         .import('../components/google-code-prettify/src/prettify.css')
         .set('filename', path)
         .set('compress', true)
