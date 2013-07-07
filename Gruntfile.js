@@ -12,7 +12,7 @@ module.exports = function (grunt) {
         livereload: true
       },
       backendjs: {
-        files: ['app.js'],
+        files: ['app.js', 'dinoipsum/*'],
         tasks: ['develop', 'delayed-livereload'],
         options: {
           nospawn: true
