@@ -36,6 +36,11 @@ require([
       var $target = $($(this).attr('href')),
           url     = '/get/?' + $('input[name], select[name]').serialize(),
           setDinoParagraphs = function (html) {
+            html = typeof html === 'string'
+                     ? html
+                     : JSON.stringify(html);
+
+
             $('#dino-output').text(html);
             $target.modal('toggle');
           };
