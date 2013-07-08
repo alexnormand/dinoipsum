@@ -47,7 +47,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/get', function(req, res) {
-  res.type('html');
+  res.type(req.query.format);
   res.end(dinoipsum.getDinos(req.query));
 });
 
