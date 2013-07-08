@@ -131,7 +131,7 @@ module.exports = function (grunt) {
         }
       }
     },
-    dommunger: {
+    dom_munger: {
       nunito: {
         options: {
           append: {
@@ -174,5 +174,5 @@ module.exports = function (grunt) {
 
 
   grunt.registerTask('default', ['develop', 'watch']);
-  grunt.registerTask('build', ['clean', 'copy', 'stylus', 'lineremover', 'cssmin', 'requirejs', 'dommunger']);
+  grunt.registerTask('build', ['clean', 'copy', 'stylus', 'lineremover', 'cssmin', 'requirejs', 'dom_munger']);
 };
