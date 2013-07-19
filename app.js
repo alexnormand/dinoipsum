@@ -48,7 +48,9 @@ app.get('/', function(req, res) {
 
 app.get('/get', function(req, res) {
   res.type(req.query.format);
-  res.end(dinoipsum.getDinos(req.query));
+  dinoipsum.getDinos(req.query, function(err, dinos) {
+    res.end(dinos);
+  });
 });
 
 http.createServer(app).listen(app.get('port'), function() {

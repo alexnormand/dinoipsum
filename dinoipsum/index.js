@@ -2,12 +2,12 @@ var listOfDinos = require(__dirname + '/dinos.json');
 
 /**
  * Generates a list of random dinosaur names.
- * @param  {Object} options
+ * @param {Object} options
  *                   - paragraphs {Number} the number of paragraphs to generate (defaults to 10).
  *                   - words      {Number} the number of words per paragraph (defaults to 30).
- * @return {String}
+ * @param {Function} callback.
  */
-var generateListOfDinos = function generateListOfDinos(options) {
+var generateListOfDinos = function generateListOfDinos(options, callback) {
   var paragraphs = [];
   var numberOfParagraphs = options.paragraphs || 10;
   var wordsPerParagraph  = options.words      || 30;
@@ -20,54 +20,60 @@ var generateListOfDinos = function generateListOfDinos(options) {
     }
   }
 
-  return paragraphs;
+  callback(null, paragraphs);
 };
 
 /**
  * Converts an array of paragraphs to an HTML string.
- * @param  {Array}  paragraphs an array of paragraphs.
- * @return {String}
+ * @param {Array}    paragraphs an array of paragraphs.
+ * @param {Function} callback.
  */
-var toHTML = function toHTML(paragraphs) {
-  return paragraphs.map(function (p) {
-    return '<p>' + p.join(' ') + '</p>';
+var toHTML = function toHTML(paragraphs, callback) {
+  var html =  paragraphs.map(function (p) {
+    return '<p>' + p.join(' ') + '.</p>';
   }).join('');
+
+  callback(null, html);
 };
 
 /**
  * Converts an array of paragraphs to a stringified JSON object.
- * @param  {Array}  paragraphs an array of paragraphs.
- * @return {String}
+ * @param {Array}    paragraphs an array of paragraphs.
+ * @param {Function} callback.
  */
-var toJSON = function toJSON(paragraphs) {
-  return JSON.stringify(paragraphs);
+var toJSON = function toJSON(paragraphs, callback) {
+  callback(null, JSON.stringify(paragraphs));
 };
 
 /**
  * Converts an array of paragraphs to plain text.
- * @param  {Array}  paragraphs an array of paragraphs.
- * @return {String}
+ * @param {Array}    paragraphs an array of paragraphs.
+ * @param {Function} callback.
  */
-var toPlainText = function toPlainText(paragraphs) {
-  return paragraphs.map(function (p) {
-    return p.join(' ') + '\n\n';
+var toPlainText = function toPlainText(paragraphs, callback) {
+  var text = paragraphs.map(function (p) {
+    return p.join(' ') + '.\n\n';
   }).join('');
+
+  callback(null, text);
 };
+
 
 /**
  * Get a list of dinosaurs.
- * @param  {Object} options
+ * @param {Object} options
  *                   - paragraphs {Number} the number of paragraphs to generate (defaults to 10).
  *                   - words      {Number} the number of words per paragraph (defaults to 30).
  *                   - format     {String} the requested format response (defaults to ('html').
- * @return {String}
+ * @param {Function} callback.
  */
-exports.getDinos = function (options) {
+exports.getDinos = function(options, callback) {
   var format     = options.format || 'html';
-  var paragraphs = generateListOfDinos(options);
 
-  if (format === 'html' ) return toHTML(paragraphs);
-  if (format === 'json' ) return toJSON(paragraphs);
-  if (format === 'text')  return toPlainText(paragraphs);
+  generateListOfDinos(options, function(err, paragraphs) {
+    if (format === 'html' ) toHTML(paragraphs, callback);
+    if (format === 'json' ) toJSON(paragraphs, callback);
+    if (format === 'text')  toPlainText(paragraphs, callback);
+  });
 };
 
