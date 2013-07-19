@@ -25,6 +25,8 @@ require([
   'bootstrap-select'
   ],
   function ($, prettify) {
+    var $dinoOutput = $('#dino-output');
+
     // output format dropdown menu
     $('select[name="format"]')
       .selectpicker({ style: 'btn-inverse', menuStyle: 'dropdown-inverse' });
@@ -37,17 +39,34 @@ require([
           url     = '/get/?' + $('input[name], select[name]').serialize(),
           setDinoParagraphs = function (html) {
             html = typeof html === 'string'
-                     ? html
-                     : JSON.stringify(html);
+               ? html
+               : JSON.stringify(html, null, 4);
 
-
-            $('#dino-output').text(html);
+            $dinoOutput.text(html);
             $target.modal('toggle');
           };
 
       $.get(url).then(setDinoParagraphs);
     });
 
+    // Select output button click handler.
+    $('#select-output').on('click', function() {
+      var element = $dinoOutput.get(0),
+          range,
+          selection;
+
+      if (document.body.createTextRange) { //ms
+        range = document.body.createTextRange();
+        range.moveToElementText(element);
+        range.select();
+      } else if (window.getSelection) { //all others
+        selection = window.getSelection();
+        range = document.createRange();
+        range.selectNodeContents(element);
+        selection.removeAllRanges();
+        selection.addRange(range);
+      }
+    });
 
     // prettyprint usage examples
     prettify.prettyPrint();
