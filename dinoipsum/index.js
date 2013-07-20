@@ -71,9 +71,9 @@ exports.getDinos = function(options, callback) {
   var format     = options.format || 'html';
 
   generateListOfDinos(options, function(err, paragraphs) {
-    if (format === 'html' ) toHTML(paragraphs, callback);
-    if (format === 'json' ) toJSON(paragraphs, callback);
-    if (format === 'text')  toPlainText(paragraphs, callback);
+    if (format === 'html') toHTML(paragraphs, callback);
+    if (format === 'json') toJSON(paragraphs, callback);
+    if (format === 'text') toPlainText(paragraphs, callback);
   });
 };
 
