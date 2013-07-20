@@ -61,6 +61,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/get', function(req, res) {
+  req.query.format = req.query.format || 'html';
   res.type(req.query.format);
   dinoipsum.getDinos(req.query, function(err, dinos) {
     res.end(dinos);
