@@ -1,5 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=Nunito&text='Dino Ipsumylkedsars?');
 
+
+
+$fontSize = 16px
 $darkBlue = #34495e
 $lightGreenGrey = #95a5a6
 $lightGrey = #ccc
@@ -20,7 +23,7 @@ $headerHeight = 450px
 }
 
 body
-  font-size: 20px
+  font-size: $fontSize
   color: #333
   margin : 0
   padding: 0
@@ -91,6 +94,16 @@ hr
   border-top: 1px solid #DDD
   border-bottom: 1px solid #FFF
 
+dt, dd
+  display: inline
+  margin: 0
+
+dt:before
+  content: '‣ '
+
+dd:after
+  content: '\A'
+  white-space: pre
 
 footer
   color: #333
