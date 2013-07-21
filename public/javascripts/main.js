@@ -36,7 +36,7 @@ require([
       e.stopPropagation();
 
       var $target = $($(this).attr('href')),
-          url     = '/get/?' + $('input[name], select[name]').serialize(),
+          url     = '/api/?' + $('input[name], select[name]').serialize(),
           setDinoParagraphs = function (html) {
             html = typeof html === 'string'
                ? html
