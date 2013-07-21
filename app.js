@@ -13,16 +13,10 @@ var express   = require('express'),
 var app = express();
 var allowCrossDomain = function allowCrossDomain(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Methods', 'GET');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
 
-  // intercept OPTIONS method
-  if ('OPTIONS' == req.method) {
-    res.send(200);
-  }
-  else {
-    next();
-  }
+  next();
 };
 
 app.configure(function() {
@@ -60,7 +54,7 @@ app.get('/', function(req, res) {
   fs.createReadStream(__dirname + '/public/index.html').pipe(res);
 });
 
-app.get('/get', function(req, res) {
+app.get('/api', function(req, res) {
   req.query.format = req.query.format || 'html';
   res.type(req.query.format);
   dinoipsum.getDinos(req.query, function(err, dinos) {
