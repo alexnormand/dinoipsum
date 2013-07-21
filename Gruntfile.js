@@ -41,7 +41,8 @@ module.exports = function (grunt) {
               'public/images/baby-37796.svg',
               'dinoipsum/*',
               'app.js',
-              'package.json'
+              'package.json',
+              'Procfile'
             ],
             dest: 'dist'
           },
