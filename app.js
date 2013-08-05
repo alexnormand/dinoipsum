@@ -57,7 +57,7 @@ app.get('/', function(req, res) {
 app.get('/api', function(req, res) {
   req.query.format = req.query.format || 'html';
   res.type(req.query.format);
-  dinoipsum.getDinos(req.query, function(err, dinos) {
+  dinoipsum.getDinos(req.query).then(function(dinos) {
     res.end(dinos);
   });
 });
