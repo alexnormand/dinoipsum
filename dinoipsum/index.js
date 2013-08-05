@@ -9,7 +9,7 @@ var listOfDinos = require(__dirname + '/dinos.json');
  * @return {Promise} promise.
  */
 var generateListOfDinos = function generateListOfDinos(options) {
-  return RSVP.Promise(function(resolve, reject) {
+  return new RSVP.Promise(function(resolve, reject) {
     var paragraphs = [];
     var numberOfParagraphs = options.paragraphs || 10;
     var wordsPerParagraph  = options.words      || 30;
@@ -32,7 +32,7 @@ var generateListOfDinos = function generateListOfDinos(options) {
  * @return {Promise} promise.
  */
 var toHTML = function toHTML(paragraphs) {
-  return RSVP.Promise(function(resolve, reject) {
+  return new RSVP.Promise(function(resolve, reject) {
     var html = '';
 
     for (var i = 0, length = paragraphs.length; i < length; i++) {
@@ -49,7 +49,7 @@ var toHTML = function toHTML(paragraphs) {
  * @return {Promise} promise.
  */
 var toJSON = function toJSON(paragraphs) {
-  return RSVP.Promise(function(resolve, reject) {
+  return new RSVP.Promise(function(resolve, reject) {
     resolve(JSON.stringify(paragraphs));
   });
 };
@@ -60,7 +60,7 @@ var toJSON = function toJSON(paragraphs) {
  * @return {Promise} promise.
  */
 var toPlainText = function toPlainText(paragraphs) {
-  return RSVP.Promise(function(resolve, reject) {
+  return new RSVP.Promise(function(resolve, reject) {
     var text = '';
 
     for (var i = 0, length = paragraphs.length; i < length; i++) {
