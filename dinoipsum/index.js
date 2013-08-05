@@ -29,9 +29,11 @@ var generateListOfDinos = function generateListOfDinos(options, callback) {
  * @param {Function} callback.
  */
 var toHTML = function toHTML(paragraphs, callback) {
-  var html =  paragraphs.map(function (p) {
-    return '<p>' + p.join(' ') + '.</p>';
-  }).join('');
+  var html = '';
+
+  for (var i = 0, length = paragraphs.length; i < length; i++) {
+    html += '<p>' + paragraphs[i].join(' ') + '.</p>';
+  }
 
   callback(null, html);
 };
@@ -51,9 +53,11 @@ var toJSON = function toJSON(paragraphs, callback) {
  * @param {Function} callback.
  */
 var toPlainText = function toPlainText(paragraphs, callback) {
-  var text = paragraphs.map(function (p) {
-    return p.join(' ') + '.\n\n';
-  }).join('');
+  var text = '';
+
+  for (var i = 0, length = paragraphs.length; i < length; i++) {
+    text += paragraphs[i].join(' ') + '.\n\n';
+  }
 
   callback(null, text);
 };
@@ -68,7 +72,7 @@ var toPlainText = function toPlainText(paragraphs, callback) {
  * @param {Function} callback.
  */
 exports.getDinos = function(options, callback) {
-  var format     = options.format || 'html';
+  var format = options.format || 'html';
 
   generateListOfDinos(options, function(err, paragraphs) {
     if (format === 'html') toHTML(paragraphs, callback);
