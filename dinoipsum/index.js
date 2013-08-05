@@ -17,10 +17,10 @@ var generateListOfDinos = function generateListOfDinos(options) {
     for (var i = 0; i < numberOfParagraphs; i++) {
       paragraphs[i] = [];
 
-    for (var j = 0; j < wordsPerParagraph; j++) {
-      paragraphs[i].push(listOfDinos[~~(Math.random() * listOfDinos.length)]);
+      for (var j = 0; j < wordsPerParagraph; j++) {
+        paragraphs[i].push(listOfDinos[~~(Math.random() * listOfDinos.length)]);
+      }
     }
-  }
 
     resolve(paragraphs);
   });
