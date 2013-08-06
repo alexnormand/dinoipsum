@@ -148,8 +148,20 @@ module.exports = function (grunt) {
         },
         src: 'dist/public/index.html'
       }
-    }
+    },
+    svgmin: {
+      options: {
+        plugins: [{
+          removeViewBox: false,
 
+        }]
+      },
+      dist: {
+        files: {
+          'dist/public/images/baby-37796.svg': 'dist/public/images/baby-37796.svg'
+        }
+      }
+    }
   });
 
   grunt.registerTask('delayed-livereload', 'delayed livereload', function () {
@@ -169,8 +181,9 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-requirejs');
   grunt.loadNpmTasks('grunt-line-remover');
   grunt.loadNpmTasks('grunt-dom-munger');
+  grunt.loadNpmTasks('grunt-svgmin');
 
 
   grunt.registerTask('default', ['develop', 'watch']);
-  grunt.registerTask('build', ['clean', 'copy', 'stylus', 'lineremover', 'cssmin', 'requirejs', 'dom_munger']);
+  grunt.registerTask('build', ['clean', 'copy', 'stylus', 'lineremover', 'cssmin', 'requirejs', 'dom_munger', 'svgmin']);
 };
