@@ -19,11 +19,16 @@ var allowCrossDomain = function allowCrossDomain(req, res, next) {
   next();
 };
 
+var filter = function filter(req, res) {
+  return /json|text|javascript|svg/.test(res.getHeader('Content-Type'));
+};
+
+
 app.configure(function() {
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
   app.use(allowCrossDomain);
-  app.use(express.compress());
+  app.use(express.compress({ filter: filter }));
   app.use(stylus.middleware({
     src: __dirname ,
     dest: __dirname + '/public',
