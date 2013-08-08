@@ -31,8 +31,8 @@ require([
     $('select[name="format"]')
       .selectpicker({ style: 'btn-inverse', menuStyle: 'dropdown-inverse' });
 
-    // modal click handler
-    $('[data-toggle=modal]').on('click', function (e) {
+    // give me dinos! button click handler
+    $('#submit-form').on('click', function (e) {
       e.stopPropagation();
 
       var $target = $($(this).attr('href')),
@@ -47,6 +47,12 @@ require([
           };
 
       $.get(url).then(setDinoParagraphs);
+    });
+
+    // reset button click handler.
+    $('#reset-form').on('click', function (e) {
+      e.preventDefault();
+      $('input[name]').val('');
     });
 
     // Select output button click handler.
