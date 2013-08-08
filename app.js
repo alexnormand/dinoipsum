@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -6,9 +5,7 @@ var express   = require('express'),
     stylus    = require('stylus'),
     nib       = require('nib'),
     dinoipsum = require(__dirname + '/dinoipsum/index.js'),
-    fs        = require('fs'),
-    http      = require('http'),
-    path      = require('path');
+    http      = require('http');
 
 var app = express();
 var allowCrossDomain = function allowCrossDomain(req, res, next) {
@@ -20,7 +17,7 @@ var allowCrossDomain = function allowCrossDomain(req, res, next) {
 };
 
 var filter = function filter(req, res) {
-  return /json|text|javascript|svg/.test(res.getHeader('Content-Type'));
+  return /json|text|javascript|svg|html/.test(res.getHeader('Content-Type'));
 };
 
 
@@ -48,7 +45,7 @@ app.configure(function() {
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
-  app.use(express.static(path.join(__dirname, 'public'), { maxAge: 2592000000  }));
+  app.use(express.static(__dirname + '/public', { maxAge: 2592000000 }));
 });
 
 app.configure('development', function() {
@@ -56,7 +53,7 @@ app.configure('development', function() {
 });
 
 app.get('/', function(req, res) {
-  fs.createReadStream(__dirname + '/public/index.html').pipe(res);
+  res.sendfile(__dirname + '/public/index.html');
 });
 
 app.get('/api', function(req, res) {
