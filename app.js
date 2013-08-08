@@ -17,7 +17,7 @@ var allowCrossDomain = function allowCrossDomain(req, res, next) {
 };
 
 var filter = function filter(req, res) {
-  return /json|text|javascript|svg/.test(res.getHeader('Content-Type'));
+  return /json|text|javascript|svg|html/.test(res.getHeader('Content-Type'));
 };
 
 
