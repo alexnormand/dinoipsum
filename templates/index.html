@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% set page = get_page(path="_index.md") %}
+
+{% block content %}
+{{ section.content | safe }}
+{% endblock content %}

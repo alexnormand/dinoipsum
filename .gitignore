@@ -1,6 +1,5 @@
 node_modules/
-public/components
-public/stylesheets
+public/
 .sass-cache
 nohup.out
 dist/
