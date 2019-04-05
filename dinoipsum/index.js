@@ -1,5 +1,4 @@
-var RSVP        = require('rsvp');
-var listOfDinos = require(__dirname + '/dinos.json');
+const listOfDinos = require(__dirname + '/dinos.json');
 
 /**
  * Generates a list of random dinosaur names.
@@ -8,69 +7,43 @@ var listOfDinos = require(__dirname + '/dinos.json');
  *                    - words      {Number} the number of words per paragraph (defaults to 30).
  * @return {Promise} promise.
  */
-var generateListOfDinos = function generateListOfDinos(options) {
-  return new RSVP.Promise(function(resolve, reject) {
-    var paragraphs = [];
-    var numberOfParagraphs = options.paragraphs || 10;
-    var wordsPerParagraph  = options.words      || 30;
+const generateListOfDinos = ({ paragraphs=10, words=30 }) => {
+  const res = [];
 
-    for (var i = 0; i < numberOfParagraphs; i++) {
-      paragraphs[i] = [];
+  for (var i = 0; i < paragraphs; i++) {
+    res[i] = [];
 
-      for (var j = 0; j < wordsPerParagraph; j++) {
-        paragraphs[i].push(listOfDinos[~~(Math.random() * listOfDinos.length)]);
-      }
+    for (var j = 0; j < words; j++) {
+      res[i].push(listOfDinos[~~(Math.random() * listOfDinos.length)]);
     }
+  }
 
-    resolve(paragraphs);
-  });
-};
+  return res;
+}
 
 /**
  * Converts an array of paragraphs to an HTML string.
  * @param  {Array}   paragraphs an array of paragraphs.
  * @return {Promise} promise.
  */
-var toHTML = function toHTML(paragraphs) {
-  return new RSVP.Promise(function(resolve, reject) {
-    var html = '';
+const toHTML = (paragraphs) => paragraphs.reduce((acc, p ) => `${acc}<p>${p.join(' ')}.</p>`, '')
 
-    for (var i = 0, length = paragraphs.length; i < length; i++) {
-      html += '<p>' + paragraphs[i].join(' ') + '.</p>';
-    }
-
-    resolve(html);
-  });
-};
 
 /**
  * Converts an array of paragraphs to a stringified JSON object.
- * @param  {Array}   paragraphs an array of paragraphs.
+ * @param  {Array} paragraphs an array of paragraphs.
  * @return {Promise} promise.
  */
-var toJSON = function toJSON(paragraphs) {
-  return new RSVP.Promise(function(resolve, reject) {
-    resolve(JSON.stringify(paragraphs));
-  });
-};
+const toJSON = (paragraphs) => {
+  return JSON.stringify(paragraphs);
+}
 
 /**
  * Converts an array of paragraphs to plain text.
  * @param  {Array}   paragraphs an array of paragraphs.
  * @return {Promise} promise.
  */
-var toPlainText = function toPlainText(paragraphs) {
-  return new RSVP.Promise(function(resolve, reject) {
-    var text = '';
-
-    for (var i = 0, length = paragraphs.length; i < length; i++) {
-      text += paragraphs[i].join(' ') + '.\n\n';
-    }
-
-    resolve(text);
-  });
-};
-
+const toPlainText = (paragraphs) => paragraphs.reduce((acc, p ) => acc + p.join(' ') + '.\n\n', '')
 
 /**
  * Get a list of dinosaurs.
@@ -80,13 +53,16 @@ var toPlainText = function toPlainText(paragraphs) {
  *                    - format     {String} the requested format response (defaults to ('html').
  * @return {Promise} promise.
  */
-exports.getDinos = function(options) {
-  var format = options.format || 'html';
+exports.getDinos = function({ format='html', ...options } = {}) {
+  const dinos = generateListOfDinos(options);
 
-  return generateListOfDinos(options).then(function(paragraphs) {
-    if (format === 'html') return toHTML(paragraphs);
-    if (format === 'json') return toJSON(paragraphs);
-    if (format === 'text') return toPlainText(paragraphs);
-  });
+  switch (format) {
+    case 'html':
+      return toHTML(dinos)
+    case 'json':
+      return toJSON(dinos);
+    default:
+      return toPlainText(dinos);
+  }
 };
 
