@@ -46,9 +46,9 @@ https://dinoipsum.com/api?key1=value1&key2=value2...
 
 ```
 // Examples
-http://dinoipsum.com/api/?format=json
-http://dinoipsum.com/api/?format=text&paragraphs=3
-http://dinoipsum.com/api/?format=html&paragraphs=3&words=15
+https://dinoipsum.com/api/?format=json
+https://dinoipsum.com/api/?format=text&paragraphs=3
+https://dinoipsum.com/api/?format=html&paragraphs=3&words=15
 ```
 
 ---
@@ -59,7 +59,7 @@ The Dino Ipsum API supports CORS requests, this means that you can pull data fro
 
 ```js
 // jQuery.ajax example
-var getDinos = $.get('http://dinoipsum.com/api/?format=html'),
+var getDinos = $.get('https://dinoipsum.com/api/?format=html'),
     fillContainer = function(html) {
       $('#some-awesome-container').html(html);
     },
@@ -74,7 +74,7 @@ getDinos.then(fillContainer, oops);
 // Vanilla JavaScript example
 var xhr = new XMLHttpRequest();
 
-xhr.open('GET', 'http://dinoipsum.com/api/?format=html&words=10&paragraphs=3');
+xhr.open('GET', 'https://dinoipsum.com/api/?format=html&words=10&paragraphs=3');
 xhr.onload = function() {
   if (this.status === 200) {
     document.querySelector('#some-awesome-container').innerHTML = this.response;
@@ -87,7 +87,7 @@ xhr.send();
 
 ```js
 // Using Fetch API
-fetch('http://dinoipsum.com/api/?format=json&words=10&paragraphs=3')
+fetch('https://dinoipsum.com/api/?format=json&words=10&paragraphs=3')
   .then(response => response.json())
   .then(data => console.log(data))
   .catch(err => console.error('Where did all the dinosaurs go?'))
