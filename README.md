@@ -1,17 +1,6 @@
-Setup (DEV)
-===========
-    git clone https://github.com/alexnormand/dinoipsum.git
-    cd dinoipsum
-    npm install && bower install
-    grunt
-
-Setup (PROD)
-============
-    git clone https://github.com/alexnormand/dinoipsum.git
-    cd dinoipsum
-    npm install && bower install
-    grunt build
-    cd dist/
-    npm install --production
-    node app.js
-
+# setup
+   1. `npm ci`
+   2. `node start`
+# setup with heroku
+   1. `npm ci`
+   2. `heroku local web`
