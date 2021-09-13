@@ -25,3 +25,11 @@ command = "zola build --base-url $DEPLOY_PRIME_URL"
     from = "/api"
     to = "/.netlify/functions/dinoipsum"
     status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src *; font-src fonts.gstatic.com; style-src 'self' fonts.googleapis.com *.cloudfront.net 'unsafe-inline'; img-src * 'self' data:; script-src 'self' *.cloudfront.net;"
+    X-XSS-Protection = "1; mode=block"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"

@@ -11,7 +11,7 @@ Simply select your desired options and hit the **Give me Dinos!** button
 ---
 
 ## Getting Started
-<form id="form" action="GET">
+<form id="form" method="GET" action="/api">
   <input name="paragraphs" type="number" min="1" max="" placeholder="Number of Paragraphs">
   <input name="words" type="number" min="1" placeholder="Number of Words">
   <select name="format">
